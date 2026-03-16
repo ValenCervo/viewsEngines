@@ -6,10 +6,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var livrosRouter = require('./routes/livros'); 
 // var livrosRouter vc ta estabelecendo que ele existe. 
 // Ao acessá-lo com require ele entra na pasta router no arquivo livros e mostra o conteúdo
+var reservaRouter = require('./routes/reserva');
 
 var app = express();
 
@@ -25,9 +25,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
 app.use ('/livros', livrosRouter);
 //quando escrever '/livros' na barra de pesquisa usando localhost, o app acessa ele por meio do var livrosRouter
+app.use('/reserva', reservaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
